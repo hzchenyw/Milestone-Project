@@ -22,7 +22,6 @@ def main():
 def home():
   if request.method=='GET':
     return render_template('home.html')
-  
   else:
     ticker = request.form['ticker']
     varnames = ['close','adj_close','open']
@@ -35,7 +34,7 @@ def home():
     url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={}&apikey={}&outputsize=compact'.format(ticker, key)
     response = requests.get(url)
     df = pd.DataFrame(response.json()['Time Series (Daily)']).transpose()
-    df=df.iloc[::-1]
+    #df=df.iloc[::500]
     df.reset_index(inplace=True)
     df = df.rename(columns = {'index':'date'})
     df.columns=['date','open','high','low','close','adjusted close','volume','dividend','split']
@@ -57,7 +56,6 @@ def home():
       plt.yaxis.axis_label = "Price $"
       plt.legend.location = "top_right"
     script,div=components(plt)
-    show(plt)
     return render_template('about.html', script=script, div=div)
 
 if __name__ == '__main__':
