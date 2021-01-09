@@ -14,10 +14,11 @@ from datetime import datetime
 app = Flask(__name__)
 vars = {}
 
-@app.route('/index',methods = ['GET','POST'])
-def index():
+@app.route('/',methods = ['GET','POST'])
+def home():
   if request.method=='GET':
     return render_template('home.html')
+  
   else:
     ticker = request.form['ticker']
     varnames = ['close','adj_close','open']
@@ -52,10 +53,10 @@ def index():
       plt.legend.location = "top_right"
     script,div=components(plt)
     
-    return render_template('home.html', script=script, div=div)
+    return render_template('about.html', script=script, div=div)
 
 if __name__ == '__main__':
-  app.run(debug=False)
+  app.run(port=33507)
     
     
 
