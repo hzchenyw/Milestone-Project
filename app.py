@@ -12,20 +12,18 @@ from datetime import datetime
 
 #Connect the app
 app = Flask(__name__)
+vars={}
+
 @app.route('/')
-def index():
-    return render_template('home.html')
+def main():
+    return redirect('/home')
 
-
-
-
-@app.route('/about',methods = ['GET','POST'])
-def about():
+@app.route('/home',methods = ['GET','POST'])
+def home():
   if request.method=='GET':
     return render_template('home.html')
   
   else:
-    vars = {}
     ticker = request.form['ticker']
     varnames = ['close','adj_close','open']
     for vn in varnames:
@@ -41,6 +39,7 @@ def about():
     df.reset_index(inplace=True)
     df = df.rename(columns = {'index':'date'})
     df.columns=['date','open','high','low','close','adjusted close','volume','dividend','split']
+    df['date']=pd.to_datetime(df['date'],format="%Y-%m-%d")
     columnsdict = {'close': 'close',\
                'adj_close': 'adjusted close',\
                'open': 'open'}
@@ -58,7 +57,7 @@ def about():
       plt.yaxis.axis_label = "Price $"
       plt.legend.location = "top_right"
     script,div=components(plt)
-    
+    show(plt)
     return render_template('about.html', script=script, div=div)
 
 if __name__ == '__main__':
