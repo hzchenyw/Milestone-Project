@@ -12,10 +12,15 @@ from datetime import datetime
 
 #Connect the app
 app = Flask(__name__)
+@app.route('/')
+def home():
+    return render_template('home.html')
+
 vars = {}
 
-@app.route('/',methods = ['GET','POST'])
-def home():
+
+@app.route('/about',methods = ['GET','POST'])
+def about():
   if request.method=='GET':
     return render_template('home.html')
   
