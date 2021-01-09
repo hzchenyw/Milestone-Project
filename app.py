@@ -13,10 +13,10 @@ from datetime import datetime
 #Connect the app
 app = Flask(__name__)
 @app.route('/')
-def home():
+def index():
     return render_template('home.html')
 
-vars = {}
+
 
 
 @app.route('/about',methods = ['GET','POST'])
@@ -25,11 +25,12 @@ def about():
     return render_template('home.html')
   
   else:
+    vars = {}
     ticker = request.form['ticker']
     varnames = ['close','adj_close','open']
     for vn in varnames:
       try:
-        vars[vn] = request.form['features'+vn]
+        vars[vn] = request.form['features_'+vn]
       except:
         vars[vn] = 0
     key = 'O0YXZHA3HRN94A94'
