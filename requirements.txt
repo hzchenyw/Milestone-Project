@@ -4,3 +4,4 @@ django-heroku
 requests
 numpy 
 flask
+bokeh
