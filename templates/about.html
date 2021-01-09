@@ -7,20 +7,40 @@
     <meta name="author" content="@gotoariel">
     <!-- <link rel="icon" href="favicon.ico"> -->
 
-    <title>Wilkommen, bienvenue, and welcome to Heroku!</title>
+    <title>Ticker Lookup App</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-left">
-          <h2>About</h2>
-          <p><a href="/">Home</a></p>
-        </div>
-      </div>
-    </div>
+      <!-- navigation -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-1">
+            <span class="sr-only">Toggle navigation</span>
+            </button>
+            <span class="navbar-brand">Ticker Lookup App</span>
+          </div>
+
+          <div class="collapse navbar-collapse" id="nav-1">
+            <ul class="nav navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="https://github.com/hzchenyw/milestone-project">GitHub</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="https://www.alphavantage.co/">API</a>
+              </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      {{ div|safe }}
+      {{ script|safe }}
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
